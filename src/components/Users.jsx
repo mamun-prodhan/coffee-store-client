@@ -14,6 +14,7 @@ const Users = () => {
       .then((data) => {
         console.log(data);
         if (data.deletedCount > 0) {
+          console.log("Deleted successfully");
           const remaining = users.filter((user) => user._id !== _id);
           setUsers(remaining);
         }
@@ -31,6 +32,7 @@ const Users = () => {
               <th></th>
               <th>Email</th>
               <th>Created At</th>
+              <th>Last Logged In</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -41,6 +43,7 @@ const Users = () => {
                 <th>1</th>
                 <td>{user.email}</td>
                 <td>{user.createdAt}</td>
+                <td>{user.lastLoggedAt}</td>
                 <td>
                   <button
                     onClick={() => handleDelete(user._id)}
